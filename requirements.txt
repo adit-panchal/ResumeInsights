@@ -1,0 +1,4 @@
+django
+mysqlclient
+PyPDF2
+python-dotenv

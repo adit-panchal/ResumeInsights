@@ -1,0 +1,160 @@
+.login-body {
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 400px;
+  perspective: 1000px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00e7ed;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #cccccc;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
+  color: #ffffff;
+  box-sizing: border-box;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #00e7ed;
+  outline: none;
+  transform: translateZ(10px);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #00e7ed;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #009acd;
+}
+
+.action-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0px 38px 0px;
+}
+
+.action-link {
+  color: #00e7ed;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    padding: 12px;
+  }
+  .login-container h2 {
+    font-size: 1.5em;
+  }
+  .login-btn {
+    font-size: 14px;
+  }
+  .action-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .action-link {
+    margin-top: 10px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Light Theme Overrides for Login Page
+────────────────────────────────────────────────────────── */
+body.light-theme .login-body {
+  background-color: #f7f9fc;
+  color: #1a202c;
+}
+
+body.light-theme .login-container {
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .login-container h2 {
+  color: #1a202c;
+}
+
+body.light-theme .form-group label {
+  color: #4a5568;
+}
+
+body.light-theme .form-group input[type="email"],
+body.light-theme .form-group input[type="password"] {
+  background-color: #f7f9fc;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1a202c;
+}
+
+body.light-theme .form-group input[type="email"]:focus,
+body.light-theme .form-group input[type="password"]:focus {
+  background-color: #ffffff;
+  border-color: #009acd;
+}
+
+body.light-theme .login-btn {
+  background-color: #00e7ed;
+  color: #1a202c;
+  font-weight: bold;
+}
+
+body.light-theme .login-btn:hover {
+  background-color: #009acd;
+  color: #ffffff;
+}
+
+body.light-theme .action-link {
+  color: #009acd;
+}
