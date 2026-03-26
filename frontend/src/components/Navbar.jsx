@@ -38,6 +38,11 @@ const Navbar = () => {
     localStorage.removeItem("userName");
     localStorage.removeItem("userPhone");
     localStorage.removeItem("userAddress");
+    localStorage.removeItem("accentColor");
+    localStorage.removeItem("fontSize");
+    
+    // Clear light-theme class
+    document.body.classList.remove("light-theme");
     setUserData({ isLoggedIn: false, userName: "", userEmail: "" });
     setShowSettings(false);
     setIsMenuOpen(false);

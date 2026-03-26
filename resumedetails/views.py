@@ -82,12 +82,29 @@ def login_api(request):
     if user is not None:
         print(f"Login successful for user: {user.email}") # Debug log
         login(request, user)
+
+        # Fetch additional user data from MongoDB
+        user_data = {
+            'username': user.username,
+            'email': user.email,
+        }
+        try:
+            if settings.MONGO_DB is not None:
+                user_profiles = settings.MONGO_DB['user_profiles']
+                mongo_user = user_profiles.find_one({'email': user.email})
+                if mongo_user:
+                    user_data['name'] = mongo_user.get('name', user.username)
+                    user_data['phone'] = mongo_user.get('phone', '')
+                    user_data['address'] = mongo_user.get('address', '')
+                    prefs = mongo_user.get('preferences', {})
+                    user_data['accentColor'] = prefs.get('accentColor', '#00e7ed')
+                    user_data['fontSize'] = prefs.get('fontSize', 'medium')
+        except Exception as e:
+            print(f"Error fetching MongoDB profile on login: {e}")
+
         return Response({
             'success': True, 
-            'user': {
-                'username': user.username,
-                'email': user.email
-            }
+            'user': user_data
         })
     else:
         print(f"Login failed for email: {email}. User not found or incorrect password.") # Debug log

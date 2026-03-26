@@ -19,7 +19,22 @@ const Login = () => {
       });
       if (response.data.success) {
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userEmail", response.data.user.email || email);
+        localStorage.setItem("userName", response.data.user.name || response.data.user.username || "");
+        localStorage.setItem("userPhone", response.data.user.phone || "");
+        localStorage.setItem("userAddress", response.data.user.address || "");
+        
+        const accentCol = response.data.user.accentColor || "#00e7ed";
+        localStorage.setItem("accentColor", accentCol);
+        localStorage.setItem("fontSize", response.data.user.fontSize || "medium");
+
+        // Toggle Light Theme natively
+        if (accentCol === "#ffffff") {
+          document.body.classList.add("light-theme");
+        } else {
+          document.body.classList.remove("light-theme");
+        }
+
         navigate("/home");
       }
     } catch (err) {
